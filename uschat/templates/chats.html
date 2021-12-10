@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block nav %}
+<a class="nav-item nav-link" href="{{ url_for('users.add_frnd') }}">Add Friend</a>
+{% endblock %}
+{% block content %}
+    {% for chat in chats.items %}
+          <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + chat.receiver.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h2><a class="mr-2" href="{{url_for('messages.msgs', frnd_id=chat.user_id)}}">{{ chat.receiver.username }}</a></h2>
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

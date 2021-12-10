@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for user in users.items %}
+          <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <form action="{{ url_for('users.add', user_id=user.id) }}" method="POST">
+                 <h2 class="mr-5" >{{ user.username }}
+                    <input class="btn btn-info ml-5" type="submit" value="Start Chat">
+                 </h2>
+              </form>
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

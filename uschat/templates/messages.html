@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block nav %}
+<a class="nav-item nav-link" href="{{ url_for('main.chats') }}">Chats</a>
+{% endblock %}
+{% block content %}
+<div class="content-section">
+    <img class="rounded-circle article-img m-2" src="{{ url_for('static', filename='profile_pics/' + frnd.image_file) }}">
+    <h2>{{ frnd.username }}</h2>
+    {% for msg in msgs.items %}
+        <div class="content-section">
+
+            <h6 class="article-content">{{ msg.content }}</h6>
+            <small class="text-muted">{{ msg.date_posted.strftime('%H-%M') }}</small>
+
+        </div>
+    {% endfor %}
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <div class="form-group">
+                {{ form.content.label(class="form-control-label") }}
+                {% if form.content.errors %}
+                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.content.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.content(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock content %}
