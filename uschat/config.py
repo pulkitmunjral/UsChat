@@ -17,3 +17,5 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'uschat.offical@gmail.com'
     MAIL_PASSWORD = 'kyondssan@0406'
+    DEBUG = True
+    ALLOWED_HOSTS = ['uschatapplication.herokuapp.com']
