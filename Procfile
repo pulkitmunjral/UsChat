@@ -1,1 +1,1 @@
-web: gunicorn uschat.wsgi
+web: gunicorn run.py
